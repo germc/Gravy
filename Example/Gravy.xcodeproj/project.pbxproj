@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D864599516DB1BD000CC5BD5 /* MYRecipe.m in Sources */ = {isa = PBXBuildFile; fileRef = D864599416DB1BD000CC5BD5 /* MYRecipe.m */; };
+		D864599716DB1BF800CC5BD5 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D864599616DB1BF800CC5BD5 /* Storyboard.storyboard */; };
 		D8CC8A6816DAF57E00C0AA45 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CC8A6716DAF57E00C0AA45 /* UIKit.framework */; };
 		D8CC8A6A16DAF57E00C0AA45 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CC8A6916DAF57E00C0AA45 /* Foundation.framework */; };
 		D8CC8A6C16DAF57E00C0AA45 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CC8A6B16DAF57E00C0AA45 /* CoreGraphics.framework */; };
@@ -33,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D864599316DB1BD000CC5BD5 /* MYRecipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYRecipe.h; sourceTree = "<group>"; };
+		D864599416DB1BD000CC5BD5 /* MYRecipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYRecipe.m; sourceTree = "<group>"; };
+		D864599616DB1BF800CC5BD5 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		D8CC8A6416DAF57E00C0AA45 /* Gravy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gravy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8CC8A6716DAF57E00C0AA45 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8CC8A6916DAF57E00C0AA45 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -127,6 +132,9 @@
 				D8CC8AA716DAF60300C0AA45 /* MYMasterViewController.m */,
 				D8CC8AA916DAF62000C0AA45 /* MYDetailViewController.h */,
 				D8CC8AAA16DAF62000C0AA45 /* MYDetailViewController.m */,
+				D864599316DB1BD000CC5BD5 /* MYRecipe.h */,
+				D864599416DB1BD000CC5BD5 /* MYRecipe.m */,
+				D864599616DB1BF800CC5BD5 /* Storyboard.storyboard */,
 				D8CC8AA516DAF5C900C0AA45 /* Gravy */,
 				D8CC8A6E16DAF57E00C0AA45 /* Supporting Files */,
 			);
@@ -234,6 +242,7 @@
 				D8CC8A7C16DAF57E00C0AA45 /* Default@2x.png in Resources */,
 				D8CC8A7E16DAF57E00C0AA45 /* Default-568h@2x.png in Resources */,
 				D8CC8AA416DAF5C300C0AA45 /* README.md in Resources */,
+				D864599716DB1BF800CC5BD5 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +267,7 @@
 				D8CC8AA316DAF5C300C0AA45 /* NSObject+GRIntrospection.m in Sources */,
 				D8CC8AA816DAF60300C0AA45 /* MYMasterViewController.m in Sources */,
 				D8CC8AAB16DAF62000C0AA45 /* MYDetailViewController.m in Sources */,
+				D864599516DB1BD000CC5BD5 /* MYRecipe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

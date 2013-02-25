@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3103" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="QbS-jn-R6w">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="J84-uh-2Ge">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="QbS-jn-R6w" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PmS-QZ-xj2">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.74484120244565211" green="0.52890383613972991" blue="0.16850048501663037" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Fhq-Eb-YTN" kind="relationship" relationship="rootViewController" id="sNV-qH-fxo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j1Y-nK-OsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-277" y="-49"/>
+        </scene>
+        <!--Master View Controller - Recipes-->
+        <scene sceneID="geb-h1-9dE">
+            <objects>
+                <viewController id="Fhq-Eb-YTN" customClass="MYMasterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f9c-7d-yHB">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xZD-te-y9o">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" showsCancelButton="YES" id="YOk-5g-LtS">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" red="0.74484120244565211" green="0.52890383613972991" blue="0.16850048501663037" alpha="1" colorSpace="calibratedRGB"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="Fhq-Eb-YTN" id="kFS-Ua-rZT"/>
+                                    </connections>
+                                </searchBar>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Recipes" id="Uoj-9e-Xov">
+                        <barButtonItem key="leftBarButtonItem" title="Quickies" id="i22-mF-KFR">
+                            <connections>
+                                <action selector="toggleQuickRecipes:" destination="Fhq-Eb-YTN" id="0xw-0j-atN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6nY-cx-rf8">
+                            <connections>
+                                <action selector="addRecipe:" destination="Fhq-Eb-YTN" id="k7W-C7-JSe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="quickButton" destination="i22-mF-KFR" id="KJO-Cn-Kbn"/>
+                        <outlet property="searchBar" destination="YOk-5g-LtS" id="FQ6-5A-pGM"/>
+                        <outlet property="tableView" destination="xZD-te-y9o" id="OcB-dV-kKG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cW7-K2-jxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="118" y="-49"/>
+        </scene>
+        <!--Detail View Controller - Edit Recipe-->
+        <scene sceneID="DL5-1e-Dm8">
+            <objects>
+                <viewController storyboardIdentifier="Detail" title="Edit Recipe" id="923-Hr-7G5" customClass="MYDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IvQ-kd-CH7">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="4kg-cu-ota">
+                                <rect key="frame" x="20" y="20" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="2o7-b8-cs8">
+                                <rect key="frame" x="0.0" y="106" width="320" height="398"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="mST-Hl-6eG">
+                                <rect key="frame" x="11" y="66" width="299" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="instructionsField" destination="2o7-b8-cs8" id="0Wg-HI-fYI"/>
+                        <outlet property="prepSlider" destination="mST-Hl-6eG" id="JW9-gm-O5z"/>
+                        <outlet property="titleField" destination="4kg-cu-ota" id="M4b-uZ-tgT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QaS-Nq-LsE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="486" y="-49"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="GRViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GRViewController.h"/>
+        </class>
+        <class className="MYDetailViewController" superclassName="GRViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MYDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="instructionsField" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="prepSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="titleField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MYMasterViewController" superclassName="GRViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MYMasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addRecipe:"/>
+                <relationship kind="action" name="toggleQuickRecipes:"/>
+                <relationship kind="outlet" name="quickButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
