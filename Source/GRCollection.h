@@ -40,7 +40,7 @@
 /// Objects
 ///
 
-/* An NSArray of objects that are in this collection. */
+/* An NSArray of all objects that are in this collection. */
 -(NSArray *)objects;
 
 ///
@@ -50,20 +50,22 @@
 /* Creates a GRCollection containing all objects of the given class. */
 +(GRCollection *)collectionWithClass:(Class)class;
 
-/* Creates a GRCollection containing all objects of the given class, sorted by the given sort descriptors. */
-+(GRCollection *)collectionWithClass:(Class)class sortDescriptors:(NSArray *)sortDescriptors;
+/* Creates a GRCollection containing all objects of the given class, sorted by the given sort descriptor. */
++(GRCollection *)collectionWithClass:(Class)class sortDescriptor:(NSSortDescriptor *)sortDescriptor;
 
 /* Creates a GRCollection containing all objects of the given class, filtered by the given predicate.  */
 +(GRCollection *)collectionWithClass:(Class)class predicate:(NSPredicate *)predicate;
 
-/* Creates a GRCollection containing all objects of the given class, sorted by the given sort descriptors and filtered by the given predicate.  */
-+(GRCollection *)collectionWithClass:(Class)class sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate;
+/* Creates a GRCollection containing all objects of the given class, sorted by the given sort descriptor and filtered by the given predicate. */
++(GRCollection *)collectionWithClass:(Class)class sortDescriptor:(NSSortDescriptor *)sortDescriptor predicate:(NSPredicate *)predicate;
 
-/* Creates a GRCollection fetching objects from any classes in the parameters array, filtering with any predicates and sorting with any sort descriptors. 
- @discussion If more than one NSPredicate is supplied, the predicates will become an NSCompoundPredicate using the -andPredicateWithSubpredicates method.
- @param parameters An NSArray of parameters of type Class, NSPredicate or NSSortDescriptor in any order
- */
-+(GRCollection *)collectionWithParameters:(NSArray *)parameters;
+/* Creates a GRCollection containing all objects of the given classes, sorted by the given sort descriptors and filtered by the given predicates. If more than one predicate is given, it will be joined with an AND predicate. */
++(GRCollection *)collectionWithClasses:(NSArray *)classes sortDescriptors:(NSArray *)sortDescriptors predicates:(NSArray *)predicates;
+
+/* Creates a GRCollection containing all objects of the given classes, sorted by the given sort descriptors and filtered by the given predicates. If more than one predicate is given, it will be joined with an AND predicate. 
+ 
+ @discussion This method takes a variable argument list and sorts it into classes, sortDescriptors and predicates, and can even recursively accept arrays of those objects. */
++(GRCollection *)collectionWithParameters:(id)parameter,... NS_REQUIRES_NIL_TERMINATION;
 
 ///
 /// Sectioning
@@ -107,6 +109,9 @@
 
 /* Called when the collection finishes changing its data. */
 -(void)collectionDidChangeContent:(GRCollection *)collection;
+
+/* Called when the collection updates one of its parameters, refreshing its data. */
+-(void)collectionDidRefreshContent:(GRCollection *)collection;
 
 @end
 

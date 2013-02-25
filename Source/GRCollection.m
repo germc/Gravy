@@ -19,44 +19,54 @@
 
 +(GRCollection *)collectionWithClass:(Class)class
 {
-    return [self collectionWithClass:class sortDescriptors:nil predicate:nil];
+    return [self collectionWithClass:class sortDescriptor:nil predicate:nil];
 }
 
-+(GRCollection *)collectionWithClass:(Class)class sortDescriptors:(NSArray *)sortDescriptors
++(GRCollection *)collectionWithClass:(Class)class sortDescriptor:(NSSortDescriptor *)sortDescriptor
 {
-    return [self collectionWithClass:class sortDescriptors:sortDescriptors predicate:nil];
+    return [self collectionWithClass:class sortDescriptor:sortDescriptor predicate:nil];
 }
 
 +(GRCollection *)collectionWithClass:(Class)class predicate:(NSPredicate *)predicate
 {
-    return [self collectionWithClass:class sortDescriptors:nil predicate:predicate];
+    return [self collectionWithClass:class sortDescriptor:nil predicate:predicate];
 }
 
-+(GRCollection *)collectionWithClass:(Class)class sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate
++(GRCollection *)collectionWithClass:(Class)class sortDescriptor:(NSSortDescriptor *)sortDescriptor predicate:(NSPredicate *)predicate
 {
-    return [[GRCollection alloc] initWithClasses:@[class] sortDescriptors:sortDescriptors predicate:predicate];
+    return [[GRCollection alloc] initWithClasses:@[class]
+                                 sortDescriptors:sortDescriptor ? @[sortDescriptor] : nil
+                                      predicates:predicate ? @[predicate] : nil];
 }
 
-typedef void(^GRCollectionParameterSort)(NSArray *);
-
-+(GRCollection *)collectionWithParameters:(NSArray *)parameters
++(GRCollection *)collectionWithClasses:(NSArray *)classes sortDescriptors:(NSArray *)sortDescriptors predicates:(NSArray *)predicates
 {
+    return [[GRCollection alloc] initWithClasses:classes sortDescriptors:sortDescriptors predicates:predicates];
+}
+
++(GRCollection *)collectionWithParameters:(id)parameter, ...
+{
+    // Get parameters array
+    NSMutableArray *parameters = [NSMutableArray array];
+    va_list args;
+    va_start(args, parameter);
+    for (id arg = parameter; arg != nil; arg = va_arg(args, id))
+        [parameter addObject:parameter];
+    va_end(args);
+
     // Placeholders for three parameter types
     NSMutableArray *classes         = [NSMutableArray array];
     NSMutableArray *predicates      = [NSMutableArray array];
     NSMutableArray *sortDescriptors = [NSMutableArray array];
 
     // Iterate through parameters and divide into these types
-    [self sortParameters:parameters intoClasses:classes predicates:predicates sortDescriptors:sortDescriptors];
-
-    // Replace predicate array with compound predicate
-    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+    [self sortParameters:parameters intoClasses:classes sortDescriptors:sortDescriptors predicates:predicates];
 
     // Return the collection
-    return [[self alloc] initWithClasses:classes sortDescriptors:sortDescriptors predicate:predicate];
+    return [[self alloc] initWithClasses:classes sortDescriptors:sortDescriptors predicates:predicates];
 }
 
-+(void)sortParameters:(NSArray *)parameters intoClasses:(NSMutableArray *)classes predicates:(NSMutableArray *)predicates sortDescriptors:(NSMutableArray *)sortDescriptors
++(void)sortParameters:(NSArray *)parameters intoClasses:(NSMutableArray *)classes sortDescriptors:(NSMutableArray *)sortDescriptors predicates:(NSMutableArray *)predicates
 {
     for (id parameter in parameters)
     {
@@ -72,21 +82,25 @@ typedef void(^GRCollectionParameterSort)(NSArray *);
         if ([parameter isKindOfClass:[NSSortDescriptor class]])
             [sortDescriptors addObject:parameter];
 
-        // Recursively divide in arrays
+        // Recursively divide arrays
         if ([parameter isKindOfClass:[NSArray class]])
-            [self sortParameters:parameter intoClasses:classes predicates:predicates sortDescriptors:sortDescriptors];
+            [self sortParameters:parameter intoClasses:classes sortDescriptors:sortDescriptors predicates:predicates];
     }
 }
 
--(id)initWithClasses:(NSArray *)classes sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate
+-(id)initWithClasses:(NSArray *)classes sortDescriptors:(NSArray *)sortDescriptors predicates:(NSArray *)predicates
 {
+    // A custom initializer is used here to set the instance variables rather than call properties.
+    // This is so that refreshObjects is triggered only once, manually.
     if (self = [super init])
     {
-        // A custom initializer is used here to set the instance variables rather than call properties.
-        // This is so that refreshObjects is triggered only once, manually.
+        // Set parameters
         _classes         = classes;
         _sortDescriptors = sortDescriptors;
-        _predicate       = predicate;
+
+        // Compound predicates if more than one
+        _predicate = [predicates count] > 1 ?
+            [NSCompoundPredicate andPredicateWithSubpredicates:predicates] : [predicates lastObject];
 
         // Register the collection with the source(s) to be notified when the underlying data changes
         [self registerClasses];
@@ -116,7 +130,7 @@ typedef void(^GRCollectionParameterSort)(NSArray *);
         [[class source] deregisterObserver:self];
 }
 
-#pragma mark - Setters
+#pragma mark - Handling parameter changes
 
 -(void)setClasses:(NSArray *)classes
 {
@@ -125,21 +139,59 @@ typedef void(^GRCollectionParameterSort)(NSArray *);
     _classes = classes;
     [self registerClasses];
 
+    // Refresh and notify
     [self refreshObjects];
+    [self.delegate collectionDidRefreshContent:self];
 }
 
 -(void)setSortDescriptors:(NSArray *)sortDescriptors
 {
     _sortDescriptors = sortDescriptors;
 
+    // Refresh and notify
     [self refreshObjects];
+    [self.delegate collectionDidRefreshContent:self];
 }
 
 -(void)setPredicate:(NSPredicate *)predicate
 {
     _predicate = predicate;
 
+    // Refresh and notify
     [self refreshObjects];
+    [self.delegate collectionDidRefreshContent:self];
+}
+
+#pragma mark - Handling data changes
+
+-(void)source:(GRSource *)source didUpdateObject:(GRObject *)object changeType:(GRObjectChangeType)changeType keyPath:(NSString *)keyPath
+{
+    // Only refresh the collection's objects if the object is not precluded by the predicate
+    if (self.predicate && ![self.predicate evaluateWithObject:object] && ![self.objects containsObject:object])
+        return;
+
+    // Notify of impending change
+    [self.delegate collectionWillChangeContent:self];
+
+    // Declare the indexPath to send to the delegate
+    NSIndexPath *indexPath = nil;
+
+    // If the object was not just inserted, we need its indexPath before we refresh
+    if (changeType != GRObjectChangeTypeInsert)
+        indexPath = [self indexPathOfObject:object];
+
+    // Refresh dataset
+    [self refreshObjects];
+
+    // If the object was added/updated, we get the indexPath after the update
+    if (!indexPath)
+        indexPath = [self indexPathOfObject:object];
+
+    // Notify delegate of specific change
+    [self.delegate collection:self didChangeObjectAtIndexPath:indexPath changeType:changeType];
+
+    // Notify delegate of completed change
+    [self.delegate collectionDidChangeContent:self];
 }
 
 #pragma mark - Populating the array
@@ -166,8 +218,6 @@ typedef void(^GRCollectionParameterSort)(NSArray *);
 
     // Collate the objects
     [self collate];
-
-    // Profit!!!
 }
 
 -(void)collate
@@ -187,27 +237,6 @@ typedef void(^GRCollectionParameterSort)(NSArray *);
         [strongObjects addObject:[object nonretainedObjectValue]];
 
     return [strongObjects copy];
-}
-
-#pragma mark - Handling changes
-
--(void)source:(GRSource *)source didUpdateObject:(GRObject *)object changeType:(GRObjectChangeType)changeType keyPath:(NSString *)keyPath
-{
-    // Only refresh the collection's objects if the object is not precluded by the predicate
-    if (self.predicate && ![self.predicate evaluateWithObject:object] && ![self.objects containsObject:object])
-        return;
-
-    // Notify of impending change
-    [self.delegate collectionWillChangeContent:self];
-
-    // Refresh dataset
-    [self refreshObjects];
-
-    // Notify delegate of specific change
-    [self.delegate collection:self didChangeObjectAtIndexPath:[self indexPathOfObject:object] changeType:changeType];
-
-    // Notify delegate of completed change
-    [self.delegate collectionDidChangeContent:self];
 }
 
 #pragma mark - DataSource helpers
