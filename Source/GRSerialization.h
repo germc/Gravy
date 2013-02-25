@@ -52,8 +52,7 @@
     - Other types: NSData, NSDate
     - Primitives: unsigned and signed int/double/short/long/float, BOOL (plus typedefs like NSInteger and CGFloat)
     - Any object that conforms to GRSerializable and only contains properties of supported types
-    - Any object that is of a class taught to GRSerialization with `[GRSerialization learnConversionForClass:converter:]`.
- 
+
  Other types will be ignored by GRSerialization and will cause an unsupported type exception when handled by NSJSONSerialization. Blocks are entirely unsupported. It is impossible to represent a block as JSON.
  */
 
@@ -64,18 +63,6 @@
 
 /* Converts the given JSON data to an object of the specified class, using the given options. `class` is optional. */
 +(id)objectWithJSON:(NSData *)JSON class:(Class)class options:(NSDictionary *)options;
-
-/* Teaches GRSerialization how to convert an object of the given class to a JSON-safe object, or from a JSON-safe object to an instance of the class. Executes the block when attempting a conversion, and uses the return value of the block in the serialization. For example, if you want to serialize an NSPredicate, you can call the following code:
-    
-    [GRSerailization learnConversionForClass:[NSPredicate class] toJSONConverter:^(NSPredicate *predicate, NSString *format){
-         if (predicate)
-            return predicate.predicateFormat;
-         else
-            return [NSPredicate predicateWithFormat:format];
-    }];
- */
-typedef id(^GRSerializationConverter)(id toJSONValue, id fromJSONValue);
-+(void)learnConversionForClass:(Class)class converter:(GRSerializationConverter)converter;
 
 @end
 

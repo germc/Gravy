@@ -11,9 +11,6 @@
 // Cached NSDateFormatter for performance
 static NSDateFormatter *dateFormatter;
 
-// An array of dictionaries with information on how to convert non-supported classes
-static NSMutableDictionary *learnedConversions;
-
 // Private options keys
 static NSString * const GRSerializationOptionPropertyKey         = @"GRSerializationOptionProperty";
 static NSString * const GRSerializationOptionDestinationClassKey = @"GRSerializationOptionDestinationClass";
@@ -53,16 +50,6 @@ static NSString * const GRSerializationOptionDestinationClassKey = @"GRSerializa
     id object = [self objectWithObject:JSONObject options:options];
 
     return object;
-}
-
-+(void)learnConversionForClass:(Class)class converter:(GRSerializationConverter)converter
-{
-    // Create learnedConversions array if neccesary
-    if (!learnedConversions)
-        learnedConversions = [NSMutableArray array];
-
-    // Add this conversion
-    [learnedConversions setObject:converter forKey:NSStringFromClass(class)];
 }
 
 #pragma mark - Conversion to/from JSONObject
@@ -125,14 +112,7 @@ static NSString * const GRSerializationOptionDestinationClassKey = @"GRSerializa
     {
         return object;
     }
-    else
-    {
-        // See if there is a learned conversion for this class, execute if it there is
-        GRSerializationConverter converter = [learnedConversions valueForKey:NSStringFromClass([object class])];
-        if (converter)
-            return converter(object, nil);
-    }
-    
+
     return object;
 }
 
@@ -412,14 +392,8 @@ static NSString * const GRSerializationOptionDestinationClassKey = @"GRSerializa
         // Turn NSString into NSMutableString
         return [value mutableCopy];
     }
-    else
-    {
-        GRSerializationConverter converter = [learnedConversions valueForKey:type];
-        if (converter)
-            return converter(nil, value);
 
-        return value;
-    }
+    return value;
 }
 
 #pragma mark - Helpers

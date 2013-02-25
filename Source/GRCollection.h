@@ -18,7 +18,7 @@
  */
 
 @protocol GRCollectionDelegate;
-@interface GRCollection : NSObject <GRSourceObserver, GRSerializable>
+@interface GRCollection : NSObject <GRSourceObserver>
 
 /* The collection's delegate. Receives messages when the collection changes. */
 @property (strong, nonatomic) id<GRCollectionDelegate> delegate;
