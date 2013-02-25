@@ -140,17 +140,12 @@
 
 -(void)clearControl
 {
-    [self.control setValue:NULL forKey:[self controlKeyPath]];
-    
-//    // To clear the control we either set its value to nil or 0. The app will throw an exception if we try to set nil for a primitive value, so we
-//    @try
-//    {
-//        [self.control setValue:nil forKey:[self controlKeyPath]];
-//    }
-//    @catch (NSException *exception)
-//    {
-//        [self.control setValue:0 forKey:[self controlKeyPath]];
-//    }
+    // To clear a control with an object value keypath, we set it to nil
+    // To clear a control with a primitive value keypath, we set it to 0
+    if ([[self.control valueForKey:[self controlKeyPath]] respondsToSelector:@selector(objCType)])
+        [self.control setValue:@(0) forKey:[self controlKeyPath]];
+    else
+        [self.control setValue:nil forKey:[self controlKeyPath]];
 }
 
 -(void)controlDidChange

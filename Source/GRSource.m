@@ -84,18 +84,26 @@ static NSMutableArray *sources = nil;
 
 -(void)deregisterObject:(GRObject *)object
 {
-    // Notify observers of removed object
-    [self notifyObserversOfObjectChange:object type:GRObjectChangeTypeDelete keyPath:nil];
+    // Hold the object so it isn't released while an observer is handling it
+    GRObject *objectCache = object;
 
     // Remove this object from the store
     [self.objects removeObject:object];
+
+    // Notify observers of removed object
+    [self notifyObserversOfObjectChange:objectCache type:GRObjectChangeTypeDelete keyPath:nil];
 }
 
 -(void)notifyObserversOfObjectChange:(GRObject *)object type:(GRObjectChangeType)change keyPath:(NSString *)keyPath
 {
     // Get the observer by unthawing the NSValue, send it the update message
+    // Create a separate array because observers may want to deregister themselves here and that would cause a "was mutated while being enumerated" exception.
+    NSMutableArray *observers = [NSMutableArray array];
     for (NSValue *observerValue in self.observers)
-        [[observerValue nonretainedObjectValue] source:self didUpdateObject:object changeType:change keyPath:keyPath];
+        [observers addObject:[observerValue nonretainedObjectValue]];
+
+    for (id<GRSourceObserver> observer in observers)
+        [observer source:self didUpdateObject:object changeType:change keyPath:keyPath];
 }
 
 #pragma mark - Observer notifications
