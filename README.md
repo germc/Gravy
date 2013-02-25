@@ -4,7 +4,7 @@ Gravy is a native quick-start framework for iOS that turns your app ideas into a
 
 Say you want to build Pinterest for recipes. What a great idea! To show you how productive you'll be using Gravy, here's how to get v0.1 off the ground in 9 easy steps and ~20 lines of code.
 
-## Step 1: The Model
+## Step 1: Define the model.
 We start by subclassing `GRObject` and creating a normal interface file. No database schemas to be found here!
 
 *Recipe.h*
@@ -16,7 +16,7 @@ We start by subclassing `GRObject` and creating a normal interface file. No data
 	
 	@end
 
-## Step 2: The Source
+## Step 2: Choose the source.
 Our model objects live in a "source" which holds all objects of the `Recipe` class. We want to save our recipes to disk, so we'll use a `GRLocalSource`, which handles persistence automatically.
 
 *Recipe.m*
@@ -30,7 +30,7 @@ Our model objects live in a "source" which holds all objects of the `Recipe` cla
 	
 	@end
 
-## Step 3: The Collection
+## Step 3: Create a recipe collection.
 In our view controller we want to access all the recipes we've created, so we create a `GRCollection`, a class which fetches `GRObject`.
 
 *MasterViewController.m*
@@ -39,7 +39,7 @@ In our view controller we want to access all the recipes we've created, so we cr
 
 The collection will automatically update whenever we add, update or remove recipes.
 
-## Step 4: The Content View
+## Step 4: Show a list of recipes.
 We want to present the recipes to the user, so we register the collection with a UITableView.
 
     [self registerContentView:self.tableView
@@ -54,7 +54,7 @@ We want to present the recipes to the user, so we register the collection with a
              
 We'll override UITableViewDelegate/DataSource methods later to customize it, but for the moment, this will populate the table view with the objects in the collection. Any changes to the collection will update the table view as needed.
 
-## Step 5: Creating Recipes
+## Step 5: Wire up an add button.
 
 Adding new recipes is as simple as `alloc init` and `save`.
 
@@ -65,7 +65,7 @@ Adding new recipes is as simple as `alloc init` and `save`.
     	[newRecipe save];
 	}
 
-## Step 6: Updating Recipes
+## Step 6: Wire up a text view to edit recipes.
 You may want to provide a text view for the user to edit the recipe object. Here it is:
 
 *DetailViewController.m*
@@ -74,7 +74,7 @@ You may want to provide a text view for the user to edit the recipe object. Here
 	
 That one line of code is your entire detail view. The `registerControl:forKeyPath:` method binds the text view to the `instructions` property on the `recipe` object. Enter text and it'll be set on the `recipe` object. Change the recipe object and the view will update. Magical!
 
-## Step 7: Destroying Recipes
+## Step 7: Delete recipes.
 Back in your `MasterViewController` implement this UITableViewDataSource method to handle deletion:
 
 	-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -86,13 +86,12 @@ Back in your `MasterViewController` implement this UITableViewDataSource method 
 		}
 	}
 
-## Step 8: The Server
-Say we want to fetch recipes from a server. We just need to few lines of code to our app:
+## Step 8: Setup a server (optional).
+Say we want to fetch recipes from a server. We just need to add a few lines of code to our app:
 
 *Recipe.h*
 
 	@interface Recipe : GRObject <GRRemoteObject> // Add protocol
-	@property (nonatomic) BOOL isShared;
 
 *Recipe.m*
 
@@ -103,37 +102,35 @@ Say we want to fetch recipes from a server. We just need to few lines of code to
 
 	+(NSString *)endpoint 
 	{
-		return @"http://api.myserver.com/recipes"; // Specify location
-	}
-	
-	-(BOOL)serializationShouldIncludeProperty:(NSString *)property context:(NSString *)context 
-	{
-		if ([property isEqualToString:keypath(isShared)])
-			return NO;
-			
-		return YES;
+		return @"http://api.myserver.com/recipes";
 	}
 
-Rails makes it trivial to generate a simple back-end. Type into terminal:
+Rails makes it trivial to generate a simple back-end. Type into your terminal:
 
 	rails new Recipintrest
 	rails g scaffold Recipe instructions:string prep:integer
 	rails g migrate
 	
-and in recipes_controller#index change `Recipe.all` to `Recipe.where("updated_at < ?", params[:last_sync])`.
+and in `recipes_controller#index` change: 
+    
+    Recipe.all
+    
+to 
+    
+    Recipe.where("updated_at > ?", params[:last_sync])
 
 From here, GRRemoteSource will automatically fetch recipes from the specified URL, serialize the returned JSON data as `Recipe` objects and add those objects to itself. Which will in turn automatically populate your tableView with recipe objects. 
 
 **Note:** GRRemoteSource is a stub at the moment. It will be expanded to provide deep integration with a RESTful backend before the 1.0 release of Gravy.
 
-## Step 9: Networking
+## Step 9: Post recipes to the server.
 Now we have a back-end set up, let's interact with it. In `DetailViewController` we've added a share button which calls this code:
 
 	GRHTTPRequest *request = [GRHTTPRequest request:@"http://api.myserver.com/recipes"];
 	request.HTTPMethod = GRHTTPMethodPost;
 	request.payload = self.recipe;
 	request.successHandler = ^(HTTPResponse *response){
-		self.recipe.isShared = YES;
+		NSLog(@"Shared!");
 	};
 	
 	[request load];
@@ -143,6 +140,6 @@ Now we have a back-end set up, let's interact with it. In `DetailViewController`
 Gravy is all about *convention over configuration*. It assumes you want to create a normal app, and you only need to interfere if you have custom needs. This makes it incredibly customizable, and you can learn more by diving into the lightweight, readable and well-documented source code.
 
 # Installation
-Download the source and add the Gravy folder to a new blank Xcode project to get started, then just `#import "Gravy.h"`. If you'd like some easy bedtime reading, check out Gravy for Dummies (Introductory) and Gravy for Smarties (Advanced).
+Download the source and add the Gravy folder to a new blank Xcode project to get started, then just `#import "Gravy.h"`. An installation script and tutorial are coming soon.
 
 *Try Gravy and let your ideas run free.*

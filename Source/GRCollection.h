@@ -10,25 +10,11 @@
 #import "GRSource.h"
 #import "GRSerialization.h"
 
-/* GRCollection manages a dynamic array of GRObjects. You provide parameters (Class, NSSortDescriptior and/or NSPredicate) and GRCollection automatically populates itself with objects from the classes' sources. You can change any of the parameters and the collection will automatically update. GRCollection will also update whenever an object of any of its classes is added, removed or changed.
+/* GRCollection fetches and manages a dynamic array of GRObjects. You provide parameters (Class, NSSortDescriptior and/or NSPredicate) and GRCollection automatically populates itself with objects from the classes' sources. You can change any of the parameters and the collection will automatically update. GRCollection will also update whenever an object of any of its classes is added, removed or changed.
  
  # DataSource
 
- You can use the GRCollection as a UITableView/UICollectionViewDataSource. GRCollection implements basic methods that can be used for providing the necessary data. GRCollection does not implement any type of sectioning behaviour (it pretends as if it has one section containing all its objects), but you can subclass GRCollection and do two things to implement sectioning:
- 
- 1. Override -numberOfSections, -numberOfObjectsInSection:, -indexPathOfObject:, and -objectAtIndexPath: and add any other dataSource methods to provide section information.
- 2. Override -collate to create and update section information as needed.
- 
- # Relationships
-
- You can also use a GRCollection as a representation of a relationship. For example, a "post" object may have a strong reference to an "author" property. The author can then access its own posts with a collection given the parameters of the collection are the "post" class and a predicate with the format: `"author.uniqueIdentifier == %@", self.uniqueIdentifier`.
- 
- # Serialization limitations
- 
- If you're serializing a GRCollection, (for example: you have a GRCollection as a property of a GRObject that is saved to disk), you must dance around a couple of limitations. Blocks are impossible to serialize, so if you're serializing a GRCollection, you must avoid these no-no's:
- 1. NSSortDescriptors cannot be created with +[NSSortDescriptor sortDescriptiorWithKey:ascending:comparator:] (as the comparator argument takes a block)
- 2. NSPredicate cannot be created with +[NSPredicate predicateWithBlock:]
- 3. You must not pass a GRObject into a predicate. For example: [NSPredicate predicateWithFormat:@"SELF != %@", object] will not serialize properly, you must change it to [NSPredicate predicateWithFormat:@"uniqueIdentifier != %@", object.uniqueIdentifier];
+ You can use the GRCollection as a UITableView/UICollectionViewDataSource. GRCollection implements basic methods that can be used for providing the necessary data. GRCollection does not implement any type of sectioning behaviour (it pretends as if it has one section containing all its objects), but to implement sectioning you can subclass GRCollection, override -numberOfSections, -numberOfObjectsInSection:, -indexPathOfObject:, and -objectAtIndexPath:, add any other dataSource methods to provide section information, and override -collate to create and update section information as needed.
  */
 
 @protocol GRCollectionDelegate;

@@ -115,6 +115,12 @@ NSString * const GRObjectChangesTimestampKey = @"timestamp";
         [self removeObserver:self forKeyPath:property context:nil];
 }
 
+-(NSArray *)relationship:(NSString *)property class:(Class)class
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%s.uniqueIdentifier == %@", property, self.uniqueIdentifier];
+    return [GRCollection collectionWithClass:class predicate:predicate].objects;
+}
+
 #pragma mark - Description
 
 -(NSString *)description

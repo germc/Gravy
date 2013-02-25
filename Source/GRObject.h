@@ -12,7 +12,7 @@
 #define keypath(PATH) \
 [NSString stringWithUTF8String:(((void)(NO && ((void)PATH, NO)), strchr(# PATH, '.') + 1))]
 
-/* GRObject is an abstract subclass of NSObject that acts as the model layer of your application and encapsulates the data your application works with. GRObject works in conjunction with its model controller, GRSource (one source object per GRObject subclass) to provide custom functionality like persistance. GRObjects behave like vanilla NSObjects, but have two pieces of extra functionality.
+/* GRObject is an abstract subclass of NSObject that acts as the model layer of your application and encapsulates the data your application works with. GRObject works in conjunction with its model controller, GRSource (one source per GRObject subclass) to provide custom functionality like persistance. GRObjects behave like vanilla NSObjects, but have two pieces of extra functionality.
  
  1. Metadata: Automatically generated and maintained metadata (creationDate, updateDate, uniqueIdentifier)
  2. Source management: Methods for accessing the object's source, retrieving, saving and removing an object from its source.
@@ -54,6 +54,22 @@
 
 /* By default, this method deregisters the object with its source. As the source holds a strong reference to the object, this can cause the object to be deallocated if no one holds a pointer to it. You can override this method in your subclass to provide custom behaviour. Generally you should call `[super remove]` in your implementation to deregister the object. However, if you want to implement psuedo-deletion, for example by setting a 'removed' property to YES, you should not call super. */
 -(void)remove;
+
+///
+/// Relationships
+///
+
+/* Relationships in Gravy are child to parent, where the child holds a reference to the parent object. If a parent needs to access its children, it can call this method to recieve an array of its children. For example, given a MYUser object that has a to-many relationship with the MYPost class:
+ 
+    NSArray *currentUserPosts = [user relationship:@"author" ofClass:[MYPost class]];
+ 
+ then this method will return every MYPost object that contains the receiving object in its `author` property.
+ 
+ @param property The relationship property on the destination class
+ @param class The destination class of the relationship
+ @return An array of objects of the destination class that are part of this relationship.
+*/
+-(NSArray *)relationship:(NSString *)property ofClass:(Class)class;
 
 @end
 
