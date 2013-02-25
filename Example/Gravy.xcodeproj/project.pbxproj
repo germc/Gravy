@@ -1,0 +1,379 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D8CC8A6816DAF57E00C0AA45 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CC8A6716DAF57E00C0AA45 /* UIKit.framework */; };
+		D8CC8A6A16DAF57E00C0AA45 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CC8A6916DAF57E00C0AA45 /* Foundation.framework */; };
+		D8CC8A6C16DAF57E00C0AA45 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CC8A6B16DAF57E00C0AA45 /* CoreGraphics.framework */; };
+		D8CC8A7216DAF57E00C0AA45 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8CC8A7016DAF57E00C0AA45 /* InfoPlist.strings */; };
+		D8CC8A7416DAF57E00C0AA45 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8A7316DAF57E00C0AA45 /* main.m */; };
+		D8CC8A7816DAF57E00C0AA45 /* MYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8A7716DAF57E00C0AA45 /* MYAppDelegate.m */; };
+		D8CC8A7A16DAF57E00C0AA45 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D8CC8A7916DAF57E00C0AA45 /* Default.png */; };
+		D8CC8A7C16DAF57E00C0AA45 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8CC8A7B16DAF57E00C0AA45 /* Default@2x.png */; };
+		D8CC8A7E16DAF57E00C0AA45 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8CC8A7D16DAF57E00C0AA45 /* Default-568h@2x.png */; };
+		D8CC8A9A16DAF5C300C0AA45 /* GRBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8A8616DAF5C300C0AA45 /* GRBinding.m */; };
+		D8CC8A9B16DAF5C300C0AA45 /* GRCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8A8816DAF5C300C0AA45 /* GRCollection.m */; };
+		D8CC8A9C16DAF5C300C0AA45 /* GRLocalSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8A8A16DAF5C300C0AA45 /* GRLocalSource.m */; };
+		D8CC8A9D16DAF5C300C0AA45 /* GRNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8A8C16DAF5C300C0AA45 /* GRNetworking.m */; };
+		D8CC8A9E16DAF5C300C0AA45 /* GRObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8A8E16DAF5C300C0AA45 /* GRObject.m */; };
+		D8CC8A9F16DAF5C300C0AA45 /* GRRemoteSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8A9016DAF5C300C0AA45 /* GRRemoteSource.m */; };
+		D8CC8AA016DAF5C300C0AA45 /* GRSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8A9216DAF5C300C0AA45 /* GRSerialization.m */; };
+		D8CC8AA116DAF5C300C0AA45 /* GRSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8A9416DAF5C300C0AA45 /* GRSource.m */; };
+		D8CC8AA216DAF5C300C0AA45 /* GRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8A9616DAF5C300C0AA45 /* GRViewController.m */; };
+		D8CC8AA316DAF5C300C0AA45 /* NSObject+GRIntrospection.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8A9816DAF5C300C0AA45 /* NSObject+GRIntrospection.m */; };
+		D8CC8AA416DAF5C300C0AA45 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D8CC8A9916DAF5C300C0AA45 /* README.md */; };
+		D8CC8AA816DAF60300C0AA45 /* MYMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8AA716DAF60300C0AA45 /* MYMasterViewController.m */; };
+		D8CC8AAB16DAF62000C0AA45 /* MYDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CC8AAA16DAF62000C0AA45 /* MYDetailViewController.m */; };
+		D8CC8AAD16DAF63D00C0AA45 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CC8AAC16DAF63D00C0AA45 /* SystemConfiguration.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D8CC8A6416DAF57E00C0AA45 /* Gravy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gravy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8CC8A6716DAF57E00C0AA45 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D8CC8A6916DAF57E00C0AA45 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D8CC8A6B16DAF57E00C0AA45 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D8CC8A6F16DAF57E00C0AA45 /* Gravy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gravy-Info.plist"; sourceTree = "<group>"; };
+		D8CC8A7116DAF57E00C0AA45 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D8CC8A7316DAF57E00C0AA45 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D8CC8A7516DAF57E00C0AA45 /* Gravy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gravy-Prefix.pch"; sourceTree = "<group>"; };
+		D8CC8A7616DAF57E00C0AA45 /* MYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MYAppDelegate.h; sourceTree = "<group>"; };
+		D8CC8A7716DAF57E00C0AA45 /* MYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MYAppDelegate.m; sourceTree = "<group>"; };
+		D8CC8A7916DAF57E00C0AA45 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		D8CC8A7B16DAF57E00C0AA45 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D8CC8A7D16DAF57E00C0AA45 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D8CC8A8416DAF5C300C0AA45 /* Gravy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gravy.h; path = ../../Gravy.h; sourceTree = "<group>"; };
+		D8CC8A8516DAF5C300C0AA45 /* GRBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRBinding.h; path = ../../GRBinding.h; sourceTree = "<group>"; };
+		D8CC8A8616DAF5C300C0AA45 /* GRBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRBinding.m; path = ../../GRBinding.m; sourceTree = "<group>"; };
+		D8CC8A8716DAF5C300C0AA45 /* GRCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRCollection.h; path = ../../GRCollection.h; sourceTree = "<group>"; };
+		D8CC8A8816DAF5C300C0AA45 /* GRCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRCollection.m; path = ../../GRCollection.m; sourceTree = "<group>"; };
+		D8CC8A8916DAF5C300C0AA45 /* GRLocalSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRLocalSource.h; path = ../../GRLocalSource.h; sourceTree = "<group>"; };
+		D8CC8A8A16DAF5C300C0AA45 /* GRLocalSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRLocalSource.m; path = ../../GRLocalSource.m; sourceTree = "<group>"; };
+		D8CC8A8B16DAF5C300C0AA45 /* GRNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRNetworking.h; path = ../../GRNetworking.h; sourceTree = "<group>"; };
+		D8CC8A8C16DAF5C300C0AA45 /* GRNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRNetworking.m; path = ../../GRNetworking.m; sourceTree = "<group>"; };
+		D8CC8A8D16DAF5C300C0AA45 /* GRObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRObject.h; path = ../../GRObject.h; sourceTree = "<group>"; };
+		D8CC8A8E16DAF5C300C0AA45 /* GRObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRObject.m; path = ../../GRObject.m; sourceTree = "<group>"; };
+		D8CC8A8F16DAF5C300C0AA45 /* GRRemoteSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRRemoteSource.h; path = ../../GRRemoteSource.h; sourceTree = "<group>"; };
+		D8CC8A9016DAF5C300C0AA45 /* GRRemoteSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRRemoteSource.m; path = ../../GRRemoteSource.m; sourceTree = "<group>"; };
+		D8CC8A9116DAF5C300C0AA45 /* GRSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRSerialization.h; path = ../../GRSerialization.h; sourceTree = "<group>"; };
+		D8CC8A9216DAF5C300C0AA45 /* GRSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRSerialization.m; path = ../../GRSerialization.m; sourceTree = "<group>"; };
+		D8CC8A9316DAF5C300C0AA45 /* GRSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRSource.h; path = ../../GRSource.h; sourceTree = "<group>"; };
+		D8CC8A9416DAF5C300C0AA45 /* GRSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRSource.m; path = ../../GRSource.m; sourceTree = "<group>"; };
+		D8CC8A9516DAF5C300C0AA45 /* GRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRViewController.h; path = ../../GRViewController.h; sourceTree = "<group>"; };
+		D8CC8A9616DAF5C300C0AA45 /* GRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRViewController.m; path = ../../GRViewController.m; sourceTree = "<group>"; };
+		D8CC8A9716DAF5C300C0AA45 /* NSObject+GRIntrospection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+GRIntrospection.h"; path = "../../NSObject+GRIntrospection.h"; sourceTree = "<group>"; };
+		D8CC8A9816DAF5C300C0AA45 /* NSObject+GRIntrospection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+GRIntrospection.m"; path = "../../NSObject+GRIntrospection.m"; sourceTree = "<group>"; };
+		D8CC8A9916DAF5C300C0AA45 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
+		D8CC8AA616DAF60300C0AA45 /* MYMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYMasterViewController.h; sourceTree = "<group>"; };
+		D8CC8AA716DAF60300C0AA45 /* MYMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYMasterViewController.m; sourceTree = "<group>"; };
+		D8CC8AA916DAF62000C0AA45 /* MYDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYDetailViewController.h; sourceTree = "<group>"; };
+		D8CC8AAA16DAF62000C0AA45 /* MYDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYDetailViewController.m; sourceTree = "<group>"; };
+		D8CC8AAC16DAF63D00C0AA45 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D8CC8A6116DAF57E00C0AA45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8CC8AAD16DAF63D00C0AA45 /* SystemConfiguration.framework in Frameworks */,
+				D8CC8A6816DAF57E00C0AA45 /* UIKit.framework in Frameworks */,
+				D8CC8A6A16DAF57E00C0AA45 /* Foundation.framework in Frameworks */,
+				D8CC8A6C16DAF57E00C0AA45 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D8CC8A5B16DAF57E00C0AA45 = {
+			isa = PBXGroup;
+			children = (
+				D8CC8A6D16DAF57E00C0AA45 /* Gravy */,
+				D8CC8A6616DAF57E00C0AA45 /* Frameworks */,
+				D8CC8A6516DAF57E00C0AA45 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D8CC8A6516DAF57E00C0AA45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D8CC8A6416DAF57E00C0AA45 /* Gravy.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D8CC8A6616DAF57E00C0AA45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8CC8AAC16DAF63D00C0AA45 /* SystemConfiguration.framework */,
+				D8CC8A6716DAF57E00C0AA45 /* UIKit.framework */,
+				D8CC8A6916DAF57E00C0AA45 /* Foundation.framework */,
+				D8CC8A6B16DAF57E00C0AA45 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D8CC8A6D16DAF57E00C0AA45 /* Gravy */ = {
+			isa = PBXGroup;
+			children = (
+				D8CC8A7616DAF57E00C0AA45 /* MYAppDelegate.h */,
+				D8CC8A7716DAF57E00C0AA45 /* MYAppDelegate.m */,
+				D8CC8AA616DAF60300C0AA45 /* MYMasterViewController.h */,
+				D8CC8AA716DAF60300C0AA45 /* MYMasterViewController.m */,
+				D8CC8AA916DAF62000C0AA45 /* MYDetailViewController.h */,
+				D8CC8AAA16DAF62000C0AA45 /* MYDetailViewController.m */,
+				D8CC8AA516DAF5C900C0AA45 /* Gravy */,
+				D8CC8A6E16DAF57E00C0AA45 /* Supporting Files */,
+			);
+			path = Gravy;
+			sourceTree = "<group>";
+		};
+		D8CC8A6E16DAF57E00C0AA45 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D8CC8A6F16DAF57E00C0AA45 /* Gravy-Info.plist */,
+				D8CC8A7016DAF57E00C0AA45 /* InfoPlist.strings */,
+				D8CC8A7316DAF57E00C0AA45 /* main.m */,
+				D8CC8A7516DAF57E00C0AA45 /* Gravy-Prefix.pch */,
+				D8CC8A7916DAF57E00C0AA45 /* Default.png */,
+				D8CC8A7B16DAF57E00C0AA45 /* Default@2x.png */,
+				D8CC8A7D16DAF57E00C0AA45 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D8CC8AA516DAF5C900C0AA45 /* Gravy */ = {
+			isa = PBXGroup;
+			children = (
+				D8CC8A8416DAF5C300C0AA45 /* Gravy.h */,
+				D8CC8A8D16DAF5C300C0AA45 /* GRObject.h */,
+				D8CC8A8E16DAF5C300C0AA45 /* GRObject.m */,
+				D8CC8A9316DAF5C300C0AA45 /* GRSource.h */,
+				D8CC8A9416DAF5C300C0AA45 /* GRSource.m */,
+				D8CC8A8716DAF5C300C0AA45 /* GRCollection.h */,
+				D8CC8A8816DAF5C300C0AA45 /* GRCollection.m */,
+				D8CC8A9516DAF5C300C0AA45 /* GRViewController.h */,
+				D8CC8A9616DAF5C300C0AA45 /* GRViewController.m */,
+				D8CC8A8516DAF5C300C0AA45 /* GRBinding.h */,
+				D8CC8A8616DAF5C300C0AA45 /* GRBinding.m */,
+				D8CC8A8B16DAF5C300C0AA45 /* GRNetworking.h */,
+				D8CC8A8C16DAF5C300C0AA45 /* GRNetworking.m */,
+				D8CC8A9116DAF5C300C0AA45 /* GRSerialization.h */,
+				D8CC8A9216DAF5C300C0AA45 /* GRSerialization.m */,
+				D8CC8A8916DAF5C300C0AA45 /* GRLocalSource.h */,
+				D8CC8A8A16DAF5C300C0AA45 /* GRLocalSource.m */,
+				D8CC8A8F16DAF5C300C0AA45 /* GRRemoteSource.h */,
+				D8CC8A9016DAF5C300C0AA45 /* GRRemoteSource.m */,
+				D8CC8A9716DAF5C300C0AA45 /* NSObject+GRIntrospection.h */,
+				D8CC8A9816DAF5C300C0AA45 /* NSObject+GRIntrospection.m */,
+				D8CC8A9916DAF5C300C0AA45 /* README.md */,
+			);
+			name = Gravy;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D8CC8A6316DAF57E00C0AA45 /* Gravy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8CC8A8116DAF57E00C0AA45 /* Build configuration list for PBXNativeTarget "Gravy" */;
+			buildPhases = (
+				D8CC8A6016DAF57E00C0AA45 /* Sources */,
+				D8CC8A6116DAF57E00C0AA45 /* Frameworks */,
+				D8CC8A6216DAF57E00C0AA45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gravy;
+			productName = Gravy;
+			productReference = D8CC8A6416DAF57E00C0AA45 /* Gravy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D8CC8A5C16DAF57E00C0AA45 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = GR;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Nathan Tesler";
+			};
+			buildConfigurationList = D8CC8A5F16DAF57E00C0AA45 /* Build configuration list for PBXProject "Gravy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D8CC8A5B16DAF57E00C0AA45;
+			productRefGroup = D8CC8A6516DAF57E00C0AA45 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D8CC8A6316DAF57E00C0AA45 /* Gravy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D8CC8A6216DAF57E00C0AA45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8CC8A7216DAF57E00C0AA45 /* InfoPlist.strings in Resources */,
+				D8CC8A7A16DAF57E00C0AA45 /* Default.png in Resources */,
+				D8CC8A7C16DAF57E00C0AA45 /* Default@2x.png in Resources */,
+				D8CC8A7E16DAF57E00C0AA45 /* Default-568h@2x.png in Resources */,
+				D8CC8AA416DAF5C300C0AA45 /* README.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D8CC8A6016DAF57E00C0AA45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8CC8A7416DAF57E00C0AA45 /* main.m in Sources */,
+				D8CC8A7816DAF57E00C0AA45 /* MYAppDelegate.m in Sources */,
+				D8CC8A9A16DAF5C300C0AA45 /* GRBinding.m in Sources */,
+				D8CC8A9B16DAF5C300C0AA45 /* GRCollection.m in Sources */,
+				D8CC8A9C16DAF5C300C0AA45 /* GRLocalSource.m in Sources */,
+				D8CC8A9D16DAF5C300C0AA45 /* GRNetworking.m in Sources */,
+				D8CC8A9E16DAF5C300C0AA45 /* GRObject.m in Sources */,
+				D8CC8A9F16DAF5C300C0AA45 /* GRRemoteSource.m in Sources */,
+				D8CC8AA016DAF5C300C0AA45 /* GRSerialization.m in Sources */,
+				D8CC8AA116DAF5C300C0AA45 /* GRSource.m in Sources */,
+				D8CC8AA216DAF5C300C0AA45 /* GRViewController.m in Sources */,
+				D8CC8AA316DAF5C300C0AA45 /* NSObject+GRIntrospection.m in Sources */,
+				D8CC8AA816DAF60300C0AA45 /* MYMasterViewController.m in Sources */,
+				D8CC8AAB16DAF62000C0AA45 /* MYDetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D8CC8A7016DAF57E00C0AA45 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8CC8A7116DAF57E00C0AA45 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D8CC8A7F16DAF57E00C0AA45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D8CC8A8016DAF57E00C0AA45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D8CC8A8216DAF57E00C0AA45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Gravy/Gravy-Prefix.pch";
+				INFOPLIST_FILE = "Gravy/Gravy-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D8CC8A8316DAF57E00C0AA45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Gravy/Gravy-Prefix.pch";
+				INFOPLIST_FILE = "Gravy/Gravy-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D8CC8A5F16DAF57E00C0AA45 /* Build configuration list for PBXProject "Gravy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8CC8A7F16DAF57E00C0AA45 /* Debug */,
+				D8CC8A8016DAF57E00C0AA45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8CC8A8116DAF57E00C0AA45 /* Build configuration list for PBXNativeTarget "Gravy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8CC8A8216DAF57E00C0AA45 /* Debug */,
+				D8CC8A8316DAF57E00C0AA45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D8CC8A5C16DAF57E00C0AA45 /* Project object */;
+}

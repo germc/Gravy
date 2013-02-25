@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GRAppDelegate : UIResponder <UIApplicationDelegate>
+@interface MYAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

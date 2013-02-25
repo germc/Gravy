@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Nathan Tesler. All rights reserved.
 //
 
-#import "GRAppDelegate.h"
+#import "MYAppDelegate.h"
 
-@implementation GRAppDelegate
+@implementation MYAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
