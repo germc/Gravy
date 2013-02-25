@@ -378,12 +378,12 @@ static NSString * const GRCellIdentifier                    = @"Cell";
                 [contentView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 break;
 
-            case GRObjectChangeTypeDelete:
-                [contentView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                break;
-
             case GRObjectChangeTypeUpdate:
                 [contentView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                break;
+
+            case GRObjectChangeTypeDelete:
+                [contentView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 break;
         }
     }
@@ -476,6 +476,12 @@ static NSString * const GRCellIdentifier                    = @"Cell";
         [self.sectionChanges removeAllObjects];
         [self.objectChanges removeAllObjects];
     }
+}
+
+-(void)collectionDidRefreshContent:(GRCollection *)collection
+{
+    // Reload the content view
+    [[self contentViewWithCollection:collection] reloadData];
 }
 
 @end
