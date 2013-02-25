@@ -2,10 +2,10 @@
 # Gravy
 Gravy is a native quick-start framework for iOS that turns your app ideas into a working Version 0.1 in minutes. Gravy is built with **developer happiness** as Priority Number 1. It takes care of all the boilerplate you've written a thousand times over, letting you focus just on what's cool and original in your next big project.
 
-Say you want to build Pinterest for recipes. What a great idea! To show you how productive you'll be using Gravy, here's how to get v0.1 off the ground in 8 easy steps and <20 lines of code.
+Say you want to build Pinterest for recipes. What a great idea! To show you how productive you'll be using Gravy, here's how to get v0.1 off the ground in 9 easy steps and ~20 lines of code.
 
 ## Step 1: The Model
-We start by subclassing GRObject and creating a normal interface file. No database schemas to be found here!
+We start by subclassing `GRObject` and creating a normal interface file. No database schemas to be found here!
 
 *Recipe.h*
 
@@ -35,34 +35,24 @@ In our view controller we want to access all the recipes we've created, so we cr
 
 *MasterViewController.m*
 	
-    	self.recipes = [GRCollection collectionWithClass:[Recipe class]];
-	
-We may have a button in our interface that says "Show me only quick recipes", so we can create these methods:
+    self.recipes = [GRCollection collectionWithClass:[Recipe class]];
 
-	-(void)showQuickRecipes 
-	{
-			self.recipes.predicate = [NSPredicate predicateWithFormat:@"prep < 5"];
-	}
-
-	-(void)showAllRecipes
-	{
-		self.recipes.predicate = nil;
-	}
-	
-The collection will automatically update whenever its parameters change, or whenever we add, update or remove recipes.
+The collection will automatically update whenever we add, update or remove recipes.
 
 ## Step 4: The Content View
 We want to present the recipes to the user, so we register the collection with a UITableView.
 
-    	[self registerContentView:self.tableView
-                forCollection:self.recipes
-             customizeHandler:^(UITableViewCell *cell, Recipe *recipe){ cell.textLabel.text = recipe.instructions; }
-             selectionHandler:^(Recipe *recipe){ 
-                 	self.detailViewController.recipe = recipe;
-			    	[self.navigationController pushViewController:self.detailViewController animated:YES];
-             }
+    [self registerContentView:self.tableView
+            forCollection:self.recipes
+         customizeHandler:^(UITableViewCell *cell, Recipe *recipe){ 
+            cell.textLabel.text = recipe.instructions;
+         }
+         selectionHandler:^(Recipe *recipe){ 
+                self.detailViewController.recipe = recipe;
+                [self.navigationController pushViewController:self.detailViewController animated:YES];
+         }
              
-This connects the collection to the table view. Any changes to the data and the table view will respond as needed.
+We'll override UITableViewDelegate/DataSource methods later to customize it, but for the moment, this will populate the table view with the objects in the collection. Any changes to the collection will update the table view as needed.
 
 ## Step 5: Creating Recipes
 
@@ -80,7 +70,7 @@ You may want to provide a text view for the user to edit the recipe object. Here
 
 *DetailViewController.m*
 	    
-	    [self registerControl:self.instructionView forKeyPath:keypath(self.recipe.instructions)];
+    [self registerControl:self.instructionView forKeyPath:keypath(self.recipe.instructions)];
 	
 That one line of code is your entire detail view. The `registerControl:forKeyPath:` method binds the text view to the `instructions` property on the `recipe` object. Enter text and it'll be set on the `recipe` object. Change the recipe object and the view will update. Magical!
 
@@ -148,7 +138,7 @@ Now we have a back-end set up, let's interact with it. In `DetailViewController`
 	
 	[request load];
 
-**That's it.** That's <20 lines of code to build a working CRUD app with a full user interface and server component. This app isn't going to get featured on the App Store, but it's an excellent starting point and it's good enough to pass around to some friends to get some feedback. 
+**That's it.** That's about 20 lines of code to build a working CRUD app with a full user interface and server component. This app isn't going to get featured on the App Store, but it's an excellent starting point and it's good enough to pass around to some friends to get some feedback. 
 
 Gravy is all about *convention over configuration*. It assumes you want to create a normal app, and you only need to interfere if you have custom needs. This makes it incredibly customizable, and you can learn more by diving into the lightweight, readable and well-documented source code.
 
